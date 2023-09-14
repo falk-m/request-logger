@@ -5,11 +5,12 @@ $data = [
     "URL" => $_SERVER["REQUEST_URI"] ?? "",
     "GET" => $_GET ?? [],
     "POST" => $_POST ?? [],
+    "INPUT" => file_get_contents('php://input')
 ];
 
 $logfile = implode(DIRECTORY_SEPARATOR, [__dir__, "log", date("Y-m-d") . ".log"]);
 
-$content = date("c") . " " . json_encode($data);
+$content = date("c") . " " . json_encode($data) . "\r\n";
 $result = file_put_contents($logfile, $content, FILE_APPEND);
 
 if (!$result) {
