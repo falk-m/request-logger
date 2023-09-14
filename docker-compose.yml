@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+
+  php:
+    hostname: localhost
+    image: oberd/php-8.0-apache:latest
+    ports:
+      - 81:80
+    volumes:
+      - ${PWD}/:/var/www/html/
